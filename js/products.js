@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 const jason = "https://japdevdep.github.io/ecommerce-api/product/all.json";
 
 function cargarDatosProductos() {
-    document.getElementById("data").innerHTML = "";
+    document.getElementById("dataProductos").innerHTML = "";
     fetch(jason)
         .then(respuesta => respuesta.json())
 
