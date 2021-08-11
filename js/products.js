@@ -5,12 +5,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 });
 
+const jason = "https://japdevdep.github.io/ecommerce-api/product/all.json";
 
-// const jason = "https://lucianogalusso.github.io/jason/json.json";
-
-function cargarDatosProductos(url) {
+function cargarDatosProductos() {
     document.getElementById("data").innerHTML = "";
-    fetch(url)
+    fetch(jason)
         .then(respuesta => respuesta.json())
 
         .then(datos => {
