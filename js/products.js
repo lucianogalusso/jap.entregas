@@ -19,12 +19,27 @@ function cargarDatosProductos() {
                 let elem = datos[i];
 
                 htmlContentToAppend += `
-                <li>`+ elem.name +` `+ elem.cost +`</li>Descripcion:<br>
-                <p>`+ elem.description +`</p>
-                `
+                <div class="list-group-item list-group-item-action">
+		            <div class="row">
+		                <div class="col-3">
+		                    <img src="` + elem.imgSrc + `" alt="` +  `" class="img-thumbnail">
+		                </div>
+		                <div class="col">
+		                    <div class="d-flex w-100 justify-content-between">
+		                        <div>
+		                            <h4 class="mb-1">`+ elem.name +`</h4>
+		                            <p>`+ elem.description +`</p>
+		                        </div>
+		                        <small class="text-muted">` + elem.cost + ` artículos</small>
+		                    </div>
+
+		                </div>
+		            </div>
+		        </div>
+		        `
                  
 
-                document.getElementById("data").innerHTML = htmlContentToAppend;
+                document.getElementById("dataProductos").innerHTML = htmlContentToAppend;
             }
 
             
