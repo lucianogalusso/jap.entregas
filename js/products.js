@@ -2,14 +2,21 @@
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
-
+	
+	getJSONData(PRODUCTS_URL).then(function(resultObj){
+        if (resultObj.status === "ok")
+        {
+            categoriesArray = resultObj.data;
+            //Muestro las categorías ordenadas
+            showCategoriesList(categoriesArray);
+        }
+    });
 });
 
-const jason = "https://japdevdep.github.io/ecommerce-api/product/all.json";
+function showCategoriesList(array){
 
-function cargarDatosProductos() {
     document.getElementById("dataProductos").innerHTML = "";
-    fetch(jason)
+    fetch(PRODUCTS_URL)
         .then(respuesta => respuesta.json())
 
         .then(datos => {
