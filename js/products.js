@@ -37,7 +37,8 @@ function showCategoriesList(array){
 		                            <h4 class="mb-1">`+ elem.name +`</h4>
 		                            <p>`+ elem.description +`</p>
 		                        </div>
-		                        <small class="text-muted">` + elem.cost + ` $USD</small>
+		                        <br>
+		                        <h3 class="m-3">` + elem.cost + ` $USD</small>
 		                    </div>
 
 		                </div>
