@@ -4,3 +4,21 @@
 document.addEventListener("DOMContentLoaded", function(e){
 
 });
+
+function validarIngreso(){
+
+	let email = document.getElementById("email").value;
+	let password = document.getElementById("password").value;
+
+	if (email == "" || password == ""){
+
+		alert("Debe completar ambos casilleros");
+
+	}else{
+
+		window.open(inicio.html);
+
+	}
+
+
+}
