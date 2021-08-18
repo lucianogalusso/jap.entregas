@@ -38,14 +38,19 @@
 </head>
 
 <body class="text-center">
+  <nav class="site-header sticky-top py-1 bg-dark">
+      <div class="container d-flex flex-column flex-md-row justify-content-between">
+        <p class="py-2 d-none d-md-inline-block">Bienvenido a eMercado</p>
+      </div>
+    </nav>
   <div class="container p-5">
     <form class="signin">
       <h4>Iniciar sesión</h4><br>
       <label for="email">Email:</label><br>
       <input type="email" id="email" placeholder="email"><br>
       <label for="password">Contraseña:</label><br>
-      <input type="password" id="password" placeholder="password">
-      <button id="inicio">Ingresar</button>
+      <input type="password" id="password" placeholder="password"><br><br>
+      <button id="inicio" class="btn btn-primary btn-lg">Ingresar</button>
     </form>
   </div>
 
