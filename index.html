@@ -40,6 +40,13 @@
       color: white;
     }
   </style>
+
+  <!-- Google -->
+
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" content="241732690291-5r0qs2pnmaorhgugjldp2rqmog6g93d4.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
 </head>
 
 <body class="text-center">
@@ -53,7 +60,10 @@
     <h4>Iniciar sesión</h4><br>
     <input type="email" id="email" class="form-control" placeholder="Email"><br>
     <input type="password" id="password" class="form-control" placeholder="Password"><br><br>
-    <button id="inicio" class="btn btn-primary btn-lg">Ingresar</button>
+    <button id="inicio" class="btn btn-primary btn-lg">Ingresar</button><br><br>
+    
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
   </div>
 
   <script src="js/init.js"></script>
