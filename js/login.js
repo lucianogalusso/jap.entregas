@@ -3,22 +3,46 @@
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
 
-});
+	document.getElementById("inicio").addEventListener("click", function()){
 
-function validarIngreso(){
+		let email = document.getElementById("email");
+		let password = document.getElementById("password");
+		let completo = true;
 
-	let email = document.getElementById("email").value;
-	let password = document.getElementById("password").value;
+		if (email.value === ''){
 
-	if (email == "" || password == ""){
+			email.classList.add("completar");
+			completo = false;
 
-		alert("Debe completar ambos casilleros");
+		}else{
 
-	}else{
+			email.classList.remove("completar");
 
-		window.open(inicio.html);
+		}
+
+		if (password.value === '') {
+
+			password.classList.add("completar");
+			completo = false;
+
+
+		}else{
+
+			password.classList.remove("completar");
+
+		}
+
+		if (completo) {
+
+			window.location = 'inicio.html';
+
+		}else{
+
+			alert("Debe completar ambos casilleros");
+
+		}
+
 
 	}
 
-
-}
+});
