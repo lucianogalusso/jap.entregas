@@ -3,7 +3,7 @@
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
 
-	document.getElementById("inicio").addEventListener("click", function()){
+	document.getElementById("inicio").addEventListener("click", function(){
 
 		let email = document.getElementById("email");
 		let password = document.getElementById("password");
@@ -43,6 +43,6 @@ document.addEventListener("DOMContentLoaded", function(e){
 		}
 
 
-	}
+	})
 
 });
