@@ -34,6 +34,15 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 		if (completo) {
 
+      let user = {
+          email: document.getElementById("email").value, 
+          password: document.getElementById("password").value, 
+      };
+
+      let user_json = JSON.stringify(user);
+
+      localStorage.setItem("user", user_json);
+
 			window.location = 'inicio.html';
 
 		}else{
@@ -54,6 +63,8 @@ function onSignIn(googleUser) {
   console.log('Name: ' + profile.getName());
   console.log('Image URL: ' + profile.getImageUrl());
   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+  
 
   window.location = 'inicio.html';
 
