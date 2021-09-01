@@ -46,19 +46,6 @@ function ordenarProductos(clave, array){
 
 }
 
-document.addEventListener("DOMContentLoaded", function (e) {
-	
-	getJSONData(PRODUCTS_URL).then(function(resultObj){
-        if (resultObj.status === "ok")
-        {
-            productosFull = resultObj.data;
-            //Muestro las categorías ordenadas
-            showProducts(productosFull);
-        }
-    });
-
-});
-
 document.getElementById("filtro").addEventListener("click", function (){
 	
 	minPrecio = document.getElementById("minPrecio").value;
@@ -75,7 +62,7 @@ document.getElementById("filtro").addEventListener("click", function (){
 		maxPrecio = undefined;
 	}
 
-	showProducts(productosFull);
+	showProducts(productos);
 
 });
 
@@ -87,13 +74,13 @@ document.getElementById("borrarFiltro").addEventListener("click", function (){
 	minPrecio = undefined;
 	maxPrecio = undefined;
 
-	showProducts(productosFull);
+	showProducts(productos);
 
 });
 
 document.getElementById("PrecioAsc").addEventListener("click", function (){
 	
-	productos = ordenarProductos(1, productosFull);
+	productos = ordenarProductos(1, productos);
 
 	showProducts(productos);
 
@@ -101,7 +88,7 @@ document.getElementById("PrecioAsc").addEventListener("click", function (){
 
 document.getElementById("PrecioDes").addEventListener("click", function (){
 	
-	productos = ordenarProductos(2, productosFull);
+	productos = ordenarProductos(2, productos);
 
 	showProducts(productos);
 
@@ -109,9 +96,22 @@ document.getElementById("PrecioDes").addEventListener("click", function (){
 
 document.getElementById("Relevancia").addEventListener("click", function (){
 	
-	productos = ordenarProductos(3, productosFull);
+	productos = ordenarProductos(3, productos);
 
 	showProducts(productos);
+
+});
+
+document.addEventListener("DOMContentLoaded", function (e) {
+	
+	getJSONData(PRODUCTS_URL).then(function(resultObj){
+        if (resultObj.status === "ok")
+        {
+            productos = resultObj.data;
+            //Muestro las categorías ordenadas
+            showProducts(productos);
+        }
+    });
 
 });
 
@@ -124,8 +124,8 @@ function showProducts(array){
         .then(datos => {
 
             let htmlContentToAppend = "";
-            for(let i = 0; i < datos.length; i++){
-                let elem = datos[i];
+            for(let i = 0; i < array.length; i++){
+                let elem = array[i];
 
                 if (((minPrecio == undefined) || (minPrecio != undefined && elem.cost >= minPrecio)) &&
                     ((maxPrecio == undefined) || (maxPrecio != undefined && elem.cost <= maxPrecio))) {
