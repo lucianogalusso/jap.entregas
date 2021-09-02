@@ -118,7 +118,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
 function showProducts(array){
 
     document.getElementById("dataProductos").innerHTML = "";
-    fetch(PRODUCTS_URL)
+
+    fetch(PRODUCTS_URL) //DEJO EL FETCH??
         .then(respuesta => respuesta.json())
 
         .then(datos => {
