@@ -2,6 +2,7 @@
 let minPrecio;
 let maxPrecio;
 let productos = [];
+var busqueda;
 
 function ordenarProductos(clave, array){
 	let resultado = [];
@@ -113,6 +114,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
     });
 
+    document.getElementById("busqueda").addEventListener('input', function () {
+
+        busqueda = document.getElementById("busqueda").value;
+        showProducts(productos);
+
+    });
+
 });
 
 function showProducts(array){
@@ -129,7 +137,8 @@ function showProducts(array){
                 let elem = array[i];
 
                 if (((minPrecio == undefined) || (minPrecio != undefined && elem.cost >= minPrecio)) &&
-                    ((maxPrecio == undefined) || (maxPrecio != undefined && elem.cost <= maxPrecio))) {
+                    ((maxPrecio == undefined) || (maxPrecio != undefined && elem.cost <= maxPrecio)) &&
+                    ((busqueda == undefined) || (elem.name.toLowerCase().includes(busqueda)) || (elem.description.toLowerCase().includes(busqueda))) ) {
 
                 	htmlContentToAppend += `
 	                <div class="list-group-item list-group-item-action">
