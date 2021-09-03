@@ -69,6 +69,10 @@ function onSignIn(googleUser) {
       password: profile.getId(), 
   };
 
+  let user_json = JSON.stringify(user);
+
+  localStorage.setItem("user", user_json);
+
   window.location = 'inicio.html';
 
 }
