@@ -22,58 +22,35 @@
         <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
         <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-        <a class="py-2 d-none d-md-inline-block" href="" id="user"></a> <!-- type="button" onclick="document.getElementById('id01').style.display='block'" -->
+        <a class="py-2 d-none d-md-inline-block" type="button" id="user" style="color:#f1f1f1"
+        onclick="document.getElementById('id01').style.display='block'"></a>
       </div>
     </nav>
     <main role="main">
 
-  <!--<div id="id01" class="modal">   Abre usuario
+      <div id="id01" class="modal"> 
   
         <form class="modal-content animate" action="/action_page.php" method="post">
           <p></p>
 
-          <div class="container">
-            <label for="uname"><b>Username</b></label><br>
-            <input type="text" placeholder="Enter Username" name="uname" required><br>
-
-            <label for="psw"><b>Password</b></label><br>
-            <input type="password" placeholder="Enter Password" name="psw" required><br><br><br>
-
-          </div>
+        <!--<div class="container">
+            <label id="userName"><b></b></label><br>
+            <input type="text" placeholder="Cambiar usuario" name="uname" required><br>
+            <button id="filtro">Aplicar cambio</button><br><br>
+          </div>-->
 
           <div class="container" style="background-color:#f1f1f1">
             <a type="button" id="cerrar" href="index.html">Cerrar sesión?</a>
             <p></p>
           </div>
         </form>
-      </div>-->
+      </div>
 
       <section class="jumbotron text-center">
         <div class="m-5">
           <h1></h1>
         </div>
       </section>
-      <script>
-        document.addEventListener("DOMContentLoaded", function(e){
-
-          var modal = document.getElementById('id01');
-
-          // When the user clicks anywhere outside of the modal, close it
-          window.onclick = function(event) {
-              if (event.target == modal) {
-                  modal.style.display = "none";
-              }
-          }
-
-          //document.getElementById("cerrar").addEventListener("click", function(){
-
-            //localStorage.removeItem("user");
-            //window.location = 'index.html';
-
-          //})
-
-        });
-      </script>
       <div class="album py-5 bg-light">
         <div class="container">
           <div class="row">

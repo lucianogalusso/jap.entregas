@@ -50,10 +50,27 @@ document.addEventListener("DOMContentLoaded", function(e){
   if (localStorage.getItem("user")) {
     user_json = localStorage.getItem("user");
     user = JSON.parse(user_json);
+    userName = JSON.parse(user_json);
     document.getElementById("user").innerHTML = user.email;
   }else if ((ubicacion != 'https://lucianogalusso.github.io/jap.entregas/index.html') &&
             (ubicacion != 'file:///D:/Archivos%20de%20programa/jap.entregas/index.html')){
     window.location = 'index.html';
   }
+
+  var modal = document.getElementById('id01');
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  }
+
+  document.getElementById("cerrar").addEventListener("click", function(){
+
+    localStorage.removeItem("user");
+    window.location = 'index.html';
+
+  })
   
 });

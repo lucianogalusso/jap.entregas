@@ -22,9 +22,29 @@
         <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
         <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-        <a class="py-2 d-none d-md-inline-block" href="" id="user"></a>
+        <a class="py-2 d-none d-md-inline-block" type="button" id="user" style="color:#f1f1f1"
+        onclick="document.getElementById('id01').style.display='block'"></a>
       </div>
     </nav>
+
+    <div id="id01" class="modal"> 
+  
+      <form class="modal-content animate" action="/action_page.php" method="post">
+        <p></p>
+
+      <!--<div class="container">
+          <label id="userName"><b></b></label><br>
+          <input type="text" placeholder="Cambiar usuario" name="uname" required><br>
+          <button id="filtro">Aplicar cambio</button><br><br>
+        </div>-->
+
+        <div class="container" style="background-color:#f1f1f1">
+          <a type="button" id="cerrar" href="index.html">Cerrar sesión?</a>
+          <p></p>
+        </div>
+      </form>
+    </div>
+
     <main role="main" class="pb-5">
         <div class="text-center p-4">
             <h2>Categorías</h2>
