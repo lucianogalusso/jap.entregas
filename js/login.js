@@ -65,8 +65,8 @@ function onSignIn(googleUser) {
   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 
   let user = {
-      email: profile.getName()),
-      password: profile.getId()), 
+      email: profile.getName(),
+      password: profile.getId(), 
   };
 
   window.location = 'inicio.html';
