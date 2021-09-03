@@ -45,11 +45,13 @@ var getJSONData = function(url){
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
 
+  let ubicacion = window.location;
+  
   if (localStorage.getItem("user")) {
     user_json = localStorage.getItem("user");
     user = JSON.parse(user_json);
     document.getElementById("user").innerHTML = user.email;
-  }else if (window.location != 'index.html'){
+  }else if (ubicacion != 'index.html'){
     window.location = 'index.html';
   }
   
