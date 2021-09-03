@@ -45,7 +45,7 @@ var getJSONData = function(url){
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
 
-  if (localStorage.getItem("user")) {
+  if (window.location != 'index.html' || localStorage.getItem("user")) {
     user_json = localStorage.getItem("user");
     user = JSON.parse(user_json);
     document.getElementById("user").innerHTML = user.email;
