@@ -50,7 +50,6 @@ document.addEventListener("DOMContentLoaded", function(e){
   if (localStorage.getItem("user")) {
     user_json = localStorage.getItem("user");
     user = JSON.parse(user_json);
-    userName = JSON.parse(user_json);
     document.getElementById("user").innerHTML = user.email;
   }else if ((ubicacion != 'https://lucianogalusso.github.io/jap.entregas/index.html') &&
             (ubicacion != 'file:///D:/Archivos%20de%20programa/jap.entregas/index.html')){

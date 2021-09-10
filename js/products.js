@@ -123,11 +123,25 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 });
 
+function verProducto(productoName) {
+
+    let producto = {
+      costo: productoName //el ideal seria que tuviera un id unico
+    };
+
+    let producto_json = JSON.stringify(producto);
+
+    localStorage.setItem("producto", producto_json);
+
+    window.location = 'product-info.html';
+
+}
+
 function showProducts(array){
 
     document.getElementById("dataProductos").innerHTML = "";
 
-    fetch(PRODUCTS_URL) //DEJO EL FETCH??
+    fetch(PRODUCTS_URL) 
         .then(respuesta => respuesta.json())
 
         .then(datos => {
@@ -149,11 +163,13 @@ function showProducts(array){
 			                <div class="col">
 			                    <div class="d-flex w-100 justify-content-between">
 			                        <div>
+			                        	<!---<a class="mb-1 " type="button" onclick="verProducto">`+ elem.name +`</a> --->
 			                            <h4 class="mb-1">`+ elem.name +`</h4>
 			                            <p>`+ elem.description +`</p>
 			                        </div>
 			                        <br>
-			                        <small class="text-muted">` + elem.soldCount + ` artículos vendidos</small>
+			                        <small class="text-muted">` + elem.soldCount + ` artículos vendidos</small><br>
+			                        <button onclick="verProducto(`+ elem.cost +`)">Ver</button>	
 			                        
 			                    </div>
 			                    <h3 class="m-3">` + elem.cost + ` $USD</small>
@@ -172,3 +188,4 @@ function showProducts(array){
         })
         .catch(error => alert("Hubo un error: " + error));
 }
+

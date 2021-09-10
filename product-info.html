@@ -18,21 +18,43 @@
 <body>
   <nav class="site-header sticky-top py-1 bg-dark">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
+      <a class="py-2 d-none d-md-inline-block" href="inicio.html">Inicio</a>
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+      <a class="py-2 d-none d-md-inline-block" type="button" id="user" style="color:#f1f1f1"
+        onclick="document.getElementById('id01').style.display='block'"></a>
     </div>
   </nav>
+
+  <div id="id01" class="modal"> 
+  
+    <form class="modal-content animate" action="/action_page.php" method="post">
+      <p></p>
+
+    <!--<div class="container">
+        <label id="userName"><b></b></label><br>
+        <input type="text" placeholder="Cambiar usuario" name="uname" required><br>
+        <button id="filtro">Aplicar cambio</button><br><br>
+      </div>-->
+
+      <div class="container" style="background-color:#f1f1f1">
+        <a type="button" id="cerrar" href="index.html">Cerrar sesión?</a>
+        <p></p>
+      </div>
+    </form>
+  </div>
+
   <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 3 (Fecha de entrega: 19/09/2021) y Entrega 4 (Fecha de entrega: 03/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+    <div id="producto">
+
+    </div>
+    <div id="imag">
+      
     </div>
   </div>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">
