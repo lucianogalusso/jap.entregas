@@ -5,6 +5,7 @@ const PRODUCTS_URL = "https://japdevdep.github.io/ecommerce-api/product/all.json
 const PRODUCT_INFO_URL = "https://japdevdep.github.io/ecommerce-api/product/5678.json";
 const PRODUCTOS_ACTUALIZADOS_URL = "https://lucianogalusso.github.io/jap.entregas/js/infoProducts.json";
 const PRODUCT_INFO_COMMENTS_URL = "https://japdevdep.github.io/ecommerce-api/product/5678-comments.json";
+const PRODUCTOS_COMENTARIOS_ACTUALIZADOS_URL = "https://lucianogalusso.github.io/jap.entregas/js/comentariosInfo.json";
 const CART_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/987.json";
 const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
 

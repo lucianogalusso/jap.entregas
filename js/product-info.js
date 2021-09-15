@@ -1,5 +1,6 @@
 
-let corresponde = false;
+let commentsArray;
+let indice;
 
 function mostrarProducto(array, productoP){
 
@@ -9,20 +10,18 @@ function mostrarProducto(array, productoP){
     let htmlContentToAppend = "";
     let imagenes = "";
 
-    for(let i = 0; i < array.length; i++){	//ACA PROBLEMAS, NO ES UN ARRAY EL JSON
+    for(let i = 0; i < array.length; i++){	
         let elem = array[i]; 
                
         if (elem.cost == productoP){
 
-            corresponde = true;
+            indice = i;
 
         	for (let i = 0; i < elem.images.length; i++) {
 
         		imagenes += '<img class="img-thumbnail" src="'+ elem.images[i] +'" >';
 
-        	}
-
-        	
+        	}     	
 
         	htmlContentToAppend += `
            
@@ -45,22 +44,31 @@ function mostrarProducto(array, productoP){
 			document.getElementById("imag").innerHTML = imagenes;
 
 
-        }else{
-         
-        	document.getElementById("producto").innerHTML = `
-        	<div class="alert alert-danger">
-        		 <h4 class="mb-1">Lo siento, de momento no se encuentra la informacion disponible</h4>
-        	</div>
-        	`;
-
         }
 
     }
 
+    getJSONData(PRODUCTOS_COMENTARIOS_ACTUALIZADOS_URL).then(function(resultObj){
+        if (resultObj.status === "ok"){
+
+            commentsArray = resultObj.data;
+            mostrarComentarios(commentsArray, indice);
+
+        }else{
+
+            document.getElementById("cometarios").innerHTML = `
+            <div class="alert alert-danger">
+                 <h4 class="mb-1">Lo siento, de momento no se encuentra la informacion disponible</h4>
+            </div>
+            `;
+
+        }
+
+    });
      
 }
 
-function mostrarComentarios(array) {
+function mostrarComentarios(array, indice) {
 
     document.getElementById("comentarios").innerHTML = "";
         
@@ -68,43 +76,48 @@ function mostrarComentarios(array) {
 
     for (let i = 0; i < array.length; i++) {
         let elem = array[i];
-        let estrellas = "";
-        let iEstrellas = elem.score;
 
-        for (let i = 0; i < 5; i++) {
+        if (elem.indiceRelacionado == indice) {
 
-            if (iEstrellas > 0) {
+            let estrellas = "";
+            let iEstrellas = elem.score;
 
-                estrellas += '<span class="fa fa-star checked"></span>'
-                iEstrellas--;
+            for (let i = 0; i < 5; i++) {
 
-            }else{
+                if (iEstrellas > 0) {
 
-                estrellas += '<span class="fa fa-star"></span>'
+                    estrellas += '<span class="fa fa-star checked"></span>'
+                    iEstrellas--;
+
+                }else{
+
+                    estrellas += '<span class="fa fa-star"></span>'
+
+                }
 
             }
 
-        }
+            comentarios += `
 
-        comentarios += `
-
-            <div class="list-group-item list-group-item-action">
-                <div class="row">
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <div>
-                                <h4 class="mb-1">`+ elem.user +`</h4>
-                                <p>` + estrellas + `</p>  
-                                <p>`+ elem.description +`</p>
+                <div class="list-group-item list-group-item-action">
+                    <div class="row">
+                        <div class="col">
+                            <div class="d-flex w-100 justify-content-between">
+                                <div>
+                                    <h4 class="mb-1">`+ elem.user +`</h4>
+                                    <p>` + estrellas + `</p>  
+                                    <p>`+ elem.description +`</p>
+                                </div>
+                                <br>
+                                <small class="text-muted ">Fecha de comentario: ` + elem.dateTime + `</small><br>   
+                                              
                             </div>
-                            <br>
-                            <small class="text-muted ">Fecha de comentario: ` + elem.dateTime + `</small><br>   
-                                          
                         </div>
                     </div>
                 </div>
-            </div>
-        `
+            `
+
+        }
 
     }
 
@@ -112,7 +125,18 @@ function mostrarComentarios(array) {
 
 }
 
-function puntuacion() {
+function enviarComentario() {
+
+    let stars = obtenerPuntuacion();
+    let desc = document.getElementById("message").innerHTML;
+    let fecha = new Date();
+    let comentarioNuevo = {indiceRelacionado: indice, score: stars, description: desc, user: user.email, dateTime: fecha};
+
+    commentsArray.push(comentarioNuevo);
+    
+}
+
+function obtenerPuntuacion() {
 
     let elementos = document.getElementByName("puntuacion");
     for (var i = 0; i < elementos.length; i++) {
@@ -147,25 +171,6 @@ document.addEventListener("DOMContentLoaded", function(e){
 
     });
 
-    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj){
-        if (resultObj.status === "ok" && corresponde){
-
-            commentsArray = resultObj.data;
-
-            mostrarComentarios(commentsArray);
-
-        }else{
-
-            document.getElementById("cometarios").innerHTML = `
-            <div class="alert alert-danger">
-                 <h4 class="mb-1">Lo siento, de momento no se encuentra la informacion disponible</h4>
-            </div>
-            `;
-
-        }
-
-    });
-
     if (localStorage.getItem("user")) {
 
         document.getElementById("casillaComentario").innerHTML = `
@@ -173,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         <h4 class="text-center p-4">Quieres agregar un comentario?</h4>
         <form class="text-center p-4">
             <label for="lname">Comentario:</label><br>
-            <textarea name="message" rows="10" cols="30" style="width:600px; height:200px;" placeholder="Bla bla bla"></textarea><br>
+            <textarea id="message" rows="10" cols="30" style="width:600px; height:200px;" placeholder="Bla bla bla"></textarea><br>
             <label for="fname">Puntuacion:</label><br>
         </form>
         <div class="star-rating text-center">
@@ -197,7 +202,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             <label for="star-5" title="5 estrellas">
             <i class="active fa fa-star"></i>
             </label><br><br>    
-            <button id="envioComentario">Enviar</button>       
+            <button id="envioComentario" onclick="enviarComentario(`+ elem.cost +`)">Enviar</button>       
         </div><br>
             
         `;

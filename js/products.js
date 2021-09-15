@@ -163,7 +163,6 @@ function showProducts(array){
 			                <div class="col">
 			                    <div class="d-flex w-100 justify-content-between">
 			                        <div>
-			                        	<!---<a class="mb-1 " type="button" onclick="verProducto">`+ elem.name +`</a> --->
 			                            <h4 class="mb-1">`+ elem.name +`</h4>
 			                            <p>`+ elem.description +`</p>
 			                        </div>
