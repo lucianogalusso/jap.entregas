@@ -1,7 +1,7 @@
 
 let corresponde = false;
 
-function mostrarProducto(info, productoP){
+function mostrarProducto(array, productoP){
 
     document.getElementById("producto").innerHTML = "";
     document.getElementById("imag").innerHTML = "";
@@ -9,16 +9,16 @@ function mostrarProducto(info, productoP){
     let htmlContentToAppend = "";
     let imagenes = "";
 
-    //for(let i = 0; i < array.length; i++){	//ACA PROBLEMAS, NO ES UN ARRAY EL JSON
-        //let elem = array[i]; 
+    for(let i = 0; i < array.length; i++){	//ACA PROBLEMAS, NO ES UN ARRAY EL JSON
+        let elem = array[i]; 
                
-        if (info.cost == productoP){
+        if (elem.cost == productoP){
 
             corresponde = true;
 
-        	for (let i = 0; i < info.images.length; i++) {
+        	for (let i = 0; i < elem.images.length; i++) {
 
-        		imagenes += '<img class="img-thumbnail" src="'+ info.images[i] +'" >';
+        		imagenes += '<img class="img-thumbnail" src="'+ elem.images[i] +'" >';
 
         	}
 
@@ -29,15 +29,15 @@ function mostrarProducto(info, productoP){
                 <div >
                     <div class="d-flex w-100 justify-content-between">
                         <div>
-                            <h2 class="mb-1">`+ info.name +`</h4>
+                            <h2 class="mb-1">`+ elem.name +`</h4>
 
-                            <p>`+ info.description +`</p>
+                            <p>`+ elem.description +`</p>
                         </div>	
                         <br>
-                        <small class="text-muted">` + info.soldCount + ` artículos vendidos</small><br>
+                        <small class="text-muted">` + elem.soldCount + ` artículos vendidos</small><br>
                         
                     </div>
-                    <h3 class="m-3" >` + info.cost + ` $USD</small>
+                    <h3 class="m-3" >` + elem.cost + ` $USD</small>
                 </div>
 	        `
 
@@ -55,7 +55,7 @@ function mostrarProducto(info, productoP){
 
         }
 
-    //}
+    }
 
      
 }
@@ -112,21 +112,32 @@ function mostrarComentarios(array) {
 
 }
 
+function puntuacion() {
+
+    let elementos = document.getElementByName("puntuacion");
+    for (var i = 0; i < elementos.length; i++) {
+        if (elementos[i].checked) {
+            return parseInt(elementos[i].value)
+        }
+    }
+    
+}
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
 
-	getJSONData(PRODUCT_INFO_URL).then(function(resultObj){
+	getJSONData(PRODUCTOS_ACTUALIZADOS_URL).then(function(resultObj){
         if (resultObj.status === "ok" && localStorage.getItem("producto")){
 
-            productosInfo = resultObj.data;
+            productosArray = resultObj.data;
 
             producto_json = localStorage.getItem("producto");
 	    	producto = JSON.parse(producto_json);
 	    	productoPrecio = parseInt(producto.costo);
 
-            mostrarProducto(productosInfo, productoPrecio);
+            mostrarProducto(productosArray, productoPrecio);
 
         }else{
 
@@ -154,5 +165,44 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
 
     });
+
+    if (localStorage.getItem("user")) {
+
+        document.getElementById("casillaComentario").innerHTML = `
+
+        <h4 class="text-center p-4">Quieres agregar un comentario?</h4>
+        <form class="text-center p-4">
+            <label for="lname">Comentario:</label><br>
+            <textarea name="message" rows="10" cols="30" style="width:600px; height:200px;" placeholder="Bla bla bla"></textarea><br>
+            <label for="fname">Puntuacion:</label><br>
+        </form>
+        <div class="star-rating text-center">
+            <input id="star-1" type="radio" name="puntuacion" value="1"/>
+            <label for="star-1" title="1 estrellas">
+            <i class="active fa fa-star"></i>
+            </label>
+            <input id="star-2" type="radio" name="puntuacion" value="2" />
+            <label for="star-2" title="2 estrellas">
+            <i class="active fa fa-star"></i>
+            </label>
+            <input id="star-3" type="radio" name="puntuacion" value="3" />
+            <label for="star-3" title="3 estrellas">
+            <i class="active fa fa-star"></i>
+            </label>
+            <input id="star-4" type="radio" name="puntuacion" value="4" />
+            <label for="star-4" title="4 estrellas">
+            <i class="active fa fa-star"></i>
+            </label>
+            <input id="star-5" type="radio" name="puntuacion" value="5" />
+            <label for="star-5" title="5 estrellas">
+            <i class="active fa fa-star"></i>
+            </label><br><br>    
+            <button id="envioComentario">Enviar</button>       
+        </div><br>
+            
+        `;
+
+
+    }
 
 });
