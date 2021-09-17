@@ -59,11 +59,13 @@ function mostrarComentarios(arrayJso, indice) {
 
     /*if (localStorage.getItem("arregloComentarios")) {
         arregloComentarios_json = localStorage.getItem("arregloComentarios");
-        //arregloLocalComentarios = JSON.parse(arregloComentarios_json);
+        arregloLocalComentarios = JSON.parse(arregloComentarios_json);
 
-        for (let i = 0; i < arregloComentarios_json.length; i++) {
-            let elemLocal = arregloComentarios_json[i];
-            
+        alert(arregloLocalComentarios.length)
+
+        for (let i = 0; i < arregloLocalComentarios.length; i++) {
+            let elemLocal = arregloLocalComentarios[i];
+            alert(elemLocal[0])
             if (elemLocal.indiceRelacionado == indice) {
 
                 let estrellasLocal = "";
@@ -158,8 +160,7 @@ function mostrarComentarios(arrayJso, indice) {
 
     }
 
-    document.getElementById("comentariosL").innerHTML = comentariosLocal;
-    document.getElementById("comentarios").innerHTML = comentarios;
+    document.getElementById("comentarios").innerHTML = comentarios +'<br>'+ comentariosLocal;
 
 }
 
@@ -181,8 +182,8 @@ function enviarComentario() {
 
         arrLocal_json = localStorage.getItem("arregloComentarios");     //obtener el array de localstorage
         arrLocal = JSON.parse(arrLocal_json);                           //lo parseas 
-        arrLocal.push(comentarioNuevo_json);   
-        arrLocal_json = JSON.stringify(arrLocal);                       //haces un push 
+        arrLocal.push(comentarioNuevo_json);                            //haces un push 
+        arrLocal_json = JSON.stringify(arrLocal);                       
         localStorage.setItem("arregloComentarios", arrLocal_json);      //vuelves a meter en el localstorage
 
     }else{
@@ -239,7 +240,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         if (resultObj.status === "ok"){
 
             arregloJsonComentarios = resultObj.data;
-            mostrarComentarios(arregloJsonComentarios, indice); //ERROR INDICE?
+            mostrarComentarios(arregloJsonComentarios, indice); 
 
         }else{
 
