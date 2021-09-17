@@ -47,24 +47,6 @@ function mostrarProducto(array, productoP){
         }
 
     }
-
-    getJSONData(PRODUCTOS_COMENTARIOS_ACTUALIZADOS_URL).then(function(resultObj){
-        if (resultObj.status === "ok"){
-
-            commentsArray = resultObj.data;
-            mostrarComentarios(commentsArray, indice);
-
-        }else{
-
-            document.getElementById("cometarios").innerHTML = `
-            <div class="alert alert-danger">
-                 <h4 class="mb-1">Lo siento, de momento no se encuentra la informacion disponible</h4>
-            </div>
-            `;
-
-        }
-
-    });
      
 }
 
@@ -133,6 +115,8 @@ function enviarComentario() {
     let comentarioNuevo = {indiceRelacionado: indice, score: stars, description: desc, user: user.email, dateTime: fecha};
 
     commentsArray.push(comentarioNuevo);
+
+    window.location = 'products.html';
     
 }
 
@@ -169,7 +153,25 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         }
 
-    });
+    })
+
+    getJSONData(PRODUCTOS_COMENTARIOS_ACTUALIZADOS_URL).then(function (resultObj) {
+        if (resultObj.status === "ok"){
+
+            comentariosArray = resultObj.data;
+            mostrarComentarios(comentariosArray); //ERROR INDICE?
+
+        }else{
+
+            document.getElementById("comentarios").innerHTML = `
+            <div class="alert alert-danger">
+                 <h4 class="mb-1">Lo siento, de momento no se encuentra la informacion disponible</h4>
+            </div>
+            `;
+
+        }
+
+    })  
 
     if (localStorage.getItem("user")) {
 
@@ -202,7 +204,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             <label for="star-5" title="5 estrellas">
             <i class="active fa fa-star"></i>
             </label><br><br>    
-            <button id="envioComentario" onclick="enviarComentario(`+ elem.cost +`)">Enviar</button>       
+            <button id="envioComentario" onclick="enviarComentario()">Enviar</button>       
         </div><br>
             
         `;
