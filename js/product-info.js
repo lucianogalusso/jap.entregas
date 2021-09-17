@@ -13,9 +13,10 @@ function mostrarProducto(array, productoP){
     for(let i = 0; i < array.length; i++){	
         let elem = array[i]; 
                
-        if (elem.cost == productoP){
+        if (elem.cost == productoP){    //ACA NO LLEGA
 
-            indice = i;
+            //indice = i;
+            alert("hasta aca bien")
 
         	for (let i = 0; i < elem.images.length; i++) {
 
@@ -138,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 	getJSONData(PRODUCTOS_ACTUALIZADOS_URL).then(function(resultObj){
         if (resultObj.status === "ok" && localStorage.getItem("producto")){
-
+            alert("busca producto")
             productosArray = resultObj.data;
 
             producto_json = localStorage.getItem("producto");
