@@ -1,5 +1,5 @@
 
-let commentsArray;
+var arregloLocalComentarios = [];
 let indice;
 
 function mostrarProducto(array, productoP){
@@ -50,14 +50,69 @@ function mostrarProducto(array, productoP){
      
 }
 
-function mostrarComentarios(array, indice) {
+function mostrarComentarios(arrayJso, indice) {
 
     document.getElementById("comentarios").innerHTML = "";
-        
-    let comentarios = "";
 
-    for (let i = 0; i < array.length; i++) {
-        let elem = array[i];
+    let comentarios = "";
+    let comentariosLocal = "";
+
+    /*if (localStorage.getItem("arregloComentarios")) {
+        arregloComentarios_json = localStorage.getItem("arregloComentarios");
+        //arregloLocalComentarios = JSON.parse(arregloComentarios_json);
+
+        for (let i = 0; i < arregloComentarios_json.length; i++) {
+            let elemLocal = arregloComentarios_json[i];
+            
+            if (elemLocal.indiceRelacionado == indice) {
+
+                let estrellasLocal = "";
+                let iEstrellasLocal = elemLocal.score;
+
+                for (let i = 0; i < 5; i++) {
+
+                    if (iEstrellasLocal > 0) {
+
+                        estrellasLocal += '<span class="fa fa-star checked"></span>'
+                        iEstrellasLocal--;
+
+                    }else{
+
+                        estrellasLocal += '<span class="fa fa-star"></span>'
+
+                    }
+
+                }
+
+                comentariosLocal += `
+
+                    <div class="list-group-item list-group-item-action">
+                        <div class="row">
+                            <div class="col">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <div>
+                                        <h4 class="mb-1">`+ elemLocal.user +`</h4>
+                                        <p>` + estrellasLocal + `</p>  
+                                        <p>`+ elemLocal.description +`</p>
+                                    </div>
+                                    <br>
+                                    <small class="text-muted ">Fecha de comentario: ` + elemLocal.dateTime + `</small><br>   
+                                                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+            }
+
+        }
+        
+
+    }*/
+
+    for (let i = 0; i < arrayJso.length; i++) {
+        let elem = arrayJso[i];
 
         if (elem.indiceRelacionado == indice) {
 
@@ -103,29 +158,54 @@ function mostrarComentarios(array, indice) {
 
     }
 
+    document.getElementById("comentariosL").innerHTML = comentariosLocal;
     document.getElementById("comentarios").innerHTML = comentarios;
 
 }
 
 function enviarComentario() {
 
-    let stars = obtenerPuntuacion();
-    let desc = document.getElementById("message").innerHTML;
     let fecha = new Date();
-    let comentarioNuevo = {indiceRelacionado: indice, score: stars, description: desc, user: user.email, dateTime: fecha};
+    let stars = obtenerPuntuacion();
+    let comentarioNuevo = {             //los valores estan bien
+            score: stars,
+            description: document.getElementById("message").value,
+            user: user.email, 
+            dateTime: fecha,
+            indiceRelacionado: indice           
+        };
 
-    commentsArray.push(comentarioNuevo);
+    let comentarioNuevo_json = JSON.stringify(comentarioNuevo);
 
-    window.location = 'products.html';
+    if (localStorage.getItem("arregloComentarios")) {
+
+        arrLocal_json = localStorage.getItem("arregloComentarios");     //obtener el array de localstorage
+        arrLocal = JSON.parse(arrLocal_json);                           //lo parseas 
+        arrLocal.push(comentarioNuevo_json);   
+        arrLocal_json = JSON.stringify(arrLocal);                       //haces un push 
+        localStorage.setItem("arregloComentarios", arrLocal_json);      //vuelves a meter en el localstorage
+
+    }else{
+
+        let arrN = [];
+        arrN.push(comentarioNuevo_json);  
+
+        let arrN_json = JSON.stringify(arrN);
+
+        localStorage.setItem("arregloComentarios", arrN_json);
+
+    }
+
+    window.location = 'product-info.html';
     
 }
 
 function obtenerPuntuacion() {
 
-    let elementos = document.getElementByName("puntuacion");
-    for (var i = 0; i < elementos.length; i++) {
-        if (elementos[i].checked) {
-            return parseInt(elementos[i].value)
+    let elements = document.getElementsByName("puntuacion");
+    for (var i = 0; i < elements.length; i++) {
+        if (elements[i].checked) {
+            return parseInt(elements[i].value);
         }
     }
     
@@ -158,8 +238,8 @@ document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(PRODUCTOS_COMENTARIOS_ACTUALIZADOS_URL).then(function (resultObj) { //DEFINIR COMENTARIOS ACA?
         if (resultObj.status === "ok"){
 
-            comentariosArray = resultObj.data;
-            mostrarComentarios(comentariosArray, indice); //ERROR INDICE?
+            arregloJsonComentarios = resultObj.data;
+            mostrarComentarios(arregloJsonComentarios, indice); //ERROR INDICE?
 
         }else{
 
@@ -182,25 +262,28 @@ document.addEventListener("DOMContentLoaded", function(e){
             <label for="lname">Comentario:</label><br>
             <textarea id="message" rows="10" cols="30" style="width:600px; height:200px;" placeholder="Bla bla bla"></textarea><br>
             <label for="fname">Puntuacion:</label><br>
-        </form>
+        </form>      
+        `;
+
+        document.getElementById("calificacion").innerHTML = `
         <div class="star-rating text-center">
-            <input id="star-1" type="radio" name="puntuacion" value="1"/>
+            <input id="star-1" type="radio" name="puntuacion" value="1"/> 1
             <label for="star-1" title="1 estrellas">
             <i class="active fa fa-star"></i>
             </label>
-            <input id="star-2" type="radio" name="puntuacion" value="2" />
+            <input id="star-2" type="radio" name="puntuacion" value="2" /> 2
             <label for="star-2" title="2 estrellas">
             <i class="active fa fa-star"></i>
             </label>
-            <input id="star-3" type="radio" name="puntuacion" value="3" />
+            <input id="star-3" type="radio" name="puntuacion" value="3" /> 3
             <label for="star-3" title="3 estrellas">
             <i class="active fa fa-star"></i>
             </label>
-            <input id="star-4" type="radio" name="puntuacion" value="4" />
+            <input id="star-4" type="radio" name="puntuacion" value="4" /> 4
             <label for="star-4" title="4 estrellas">
             <i class="active fa fa-star"></i>
             </label>
-            <input id="star-5" type="radio" name="puntuacion" value="5" />
+            <input id="star-5" type="radio" name="puntuacion" value="5" /> 5
             <label for="star-5" title="5 estrellas">
             <i class="active fa fa-star"></i>
             </label><br><br>    
@@ -208,7 +291,6 @@ document.addEventListener("DOMContentLoaded", function(e){
         </div><br>
             
         `;
-
 
     }
 
