@@ -13,10 +13,9 @@ function mostrarProducto(array, productoP){
     for(let i = 0; i < array.length; i++){	
         let elem = array[i]; 
                
-        if (elem.cost == productoP){    //ACA NO LLEGA
+        if (elem.cost == productoP){    
 
             //indice = i;
-            alert("hasta aca bien")
 
         	for (let i = 0; i < elem.images.length; i++) {
 
@@ -139,7 +138,6 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 	getJSONData(PRODUCTOS_ACTUALIZADOS_URL).then(function(resultObj){
         if (resultObj.status === "ok" && localStorage.getItem("producto")){
-            alert("busca producto")
             productosArray = resultObj.data;
 
             producto_json = localStorage.getItem("producto");
@@ -157,20 +155,20 @@ document.addEventListener("DOMContentLoaded", function(e){
     })
 
     getJSONData(PRODUCTOS_COMENTARIOS_ACTUALIZADOS_URL).then(function (resultObj) {
-        if (resultObj.status === "ok"){
+        //if (resultObj.status === "ok"){
 
             comentariosArray = resultObj.data;
             mostrarComentarios(comentariosArray); //ERROR INDICE?
 
-        }else{
+        /*}else{
 
             document.getElementById("comentarios").innerHTML = `
-            <div class="alert alert-danger">
+            <div class="alert-danger">
                  <h4 class="mb-1">Lo siento, de momento no se encuentra la informacion disponible</h4>
             </div>
             `;
 
-        }
+        }*/
 
     })  
 
