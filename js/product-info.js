@@ -136,7 +136,7 @@ function obtenerPuntuacion() {
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
 
-	getJSONData(PRODUCTOS_ACTUALIZADOS_URL).then(function(resultObj){
+	getJSONData(PRODUCTOS_ACTUALIZADOS_URL).then(function(resultObj){  //DEFINIR PRODUCTO ACA
         if (resultObj.status === "ok" && localStorage.getItem("producto")){
             productosArray = resultObj.data;
 
@@ -154,13 +154,13 @@ document.addEventListener("DOMContentLoaded", function(e){
 
     })
 
-    getJSONData(PRODUCTOS_COMENTARIOS_ACTUALIZADOS_URL).then(function (resultObj) {
-        //if (resultObj.status === "ok"){
+    getJSONData(PRODUCTOS_COMENTARIOS_ACTUALIZADOS_URL).then(function (resultObj) { //DEFINIR COMENTARIOS ACA?
+        if (resultObj.status === "ok"){
 
             comentariosArray = resultObj.data;
             mostrarComentarios(comentariosArray); //ERROR INDICE?
 
-        /*}else{
+        }else{
 
             document.getElementById("comentarios").innerHTML = `
             <div class="alert-danger">
@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             </div>
             `;
 
-        }*/
+        }
 
     })  
 
