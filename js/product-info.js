@@ -50,7 +50,7 @@ function mostrarProducto(array, productoP){
      
 }
 
-function mostrarComentarios(array, indice) {
+function mostrarComentarios(array/*, indice*/) {
 
     document.getElementById("comentarios").innerHTML = "";
         
@@ -59,7 +59,7 @@ function mostrarComentarios(array, indice) {
     for (let i = 0; i < array.length; i++) {
         let elem = array[i];
 
-        if (elem.indiceRelacionado == indice) {
+        //if (elem.indiceRelacionado == indice) {
 
             let estrellas = "";
             let iEstrellas = elem.score;
@@ -99,7 +99,7 @@ function mostrarComentarios(array, indice) {
                 </div>
             `
 
-        }
+        //}
 
     }
 
@@ -148,17 +148,18 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         }else{
 
-        	window.location = 'products.html';
+        	alert("Hubo un error")
+            window.location = 'products.html';
 
         }
 
     })
 
-    getJSONData(PRODUCTOS_COMENTARIOS_ACTUALIZADOS_URL).then(function (resultObj) { //DEFINIR COMENTARIOS ACA?
+    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) { //DEFINIR COMENTARIOS ACA?
         if (resultObj.status === "ok"){
 
             comentariosArray = resultObj.data;
-            mostrarComentarios(comentariosArray, indice); //ERROR INDICE?
+            mostrarComentarios(comentariosArray/*, indice*/); //ERROR INDICE?
 
         }else{
 
