@@ -15,7 +15,7 @@ function mostrarProducto(array, productoP){
                
         if (elem.cost == productoP){    
 
-            //indice = i;
+            indice = i;
 
         	for (let i = 0; i < elem.images.length; i++) {
 
@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         if (resultObj.status === "ok"){
 
             comentariosArray = resultObj.data;
-            mostrarComentarios(comentariosArray); //ERROR INDICE?
+            mostrarComentarios(comentariosArray, indice); //ERROR INDICE?
 
         }else{
 
