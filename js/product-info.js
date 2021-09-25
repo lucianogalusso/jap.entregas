@@ -6,9 +6,11 @@ function mostrarProducto(array, productoP){
 
     document.getElementById("producto").innerHTML = "";
     document.getElementById("imag").innerHTML = "";
+    document.getElementById("relatedProducts").innerHTML = "";
      	
     let htmlContentToAppend = "";
     let imagenes = "";
+    let relacionados = "";
 
     for(let i = 0; i < array.length; i++){	
         let elem = array[i]; 
@@ -21,7 +23,35 @@ function mostrarProducto(array, productoP){
 
         		imagenes += '<img class="img-thumbnail" src="'+ elem.images[i] +'" >';
 
-        	}     	
+        	}  
+
+            for (let j = 0; j < elem.relatedProducts.length; j++) {
+
+                let indiceRelatedProduct = elem.relatedProducts[j];
+
+                relacionados += `
+                    <div class="list-group-item list-group-item-action">
+                        <div class="row">
+                            <div class="col-3">
+                                <img src="` + array[indiceRelatedProduct].images[0] + `" alt="` +  `" class="img-thumbnail">
+                            </div>
+                            <div class="col">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <div>
+                                        <h4 class="mb-1">`+ array[indiceRelatedProduct].name +`</h4>
+                                        <p>`+ array[indiceRelatedProduct].description +`</p>
+                                    </div>
+                                    <br>
+                                    <small class="text-muted">` + array[indiceRelatedProduct].soldCount + ` artículos vendidos</small><br>                                    
+                                </div>
+                                <h3 class="m-3">` + array[indiceRelatedProduct].cost + ` $USD</small>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                
+
+            }   	
 
         	htmlContentToAppend += `
            
@@ -42,6 +72,7 @@ function mostrarProducto(array, productoP){
 
 			document.getElementById("producto").innerHTML = htmlContentToAppend;
 			document.getElementById("imag").innerHTML = imagenes;
+            document.getElementById("relatedProducts").innerHTML = relacionados;
 
 
         }
@@ -181,7 +212,7 @@ function enviarComentario() {
     if (localStorage.getItem("arregloComentarios")) {
 
         arrLocal_json = localStorage.getItem("arregloComentarios");     //obtener el array de localstorage
-        arrLocal = JSON.parse(arrLocal_json);                           //lo parseas 
+        arrLocal = JSON.parse(arrLocal_json);                           //lo parseas FOR PARA EL PUSH??
         arrLocal.push(comentarioNuevo_json);                            //haces un push 
         arrLocal_json = JSON.stringify(arrLocal);                       
         localStorage.setItem("arregloComentarios", arrLocal_json);      //vuelves a meter en el localstorage
