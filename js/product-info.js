@@ -27,7 +27,7 @@ function mostrarProducto(array, productoP){
                         <div class="carousel-item active">
                           <img src="`+ elem.images[i] +`" class="d-block w-100">
                         </div>
-                        `
+                        `;
 
                 }else{
 
@@ -35,7 +35,7 @@ function mostrarProducto(array, productoP){
                         <div class="carousel-item">
                           <img src="`+ elem.images[i] +`" class="d-block w-100">
                         </div>
-                        `
+                        `;
 
                 }  
 
@@ -62,7 +62,7 @@ function mostrarProducto(array, productoP){
                                     </div>
                                     <br>
                                     <small class="text-muted">` + array[indiceRelatedProduct].soldCount + ` artículos vendidos</small><br> 
-                                    <button onclick="verProducto(`+ array[indiceRelatedProduct].cost +`)">Ver</button>                                   
+                                    <button class="btn btn-info" onclick="verProducto(`+ array[indiceRelatedProduct].cost +`)">Ver</button>                                   
                                 </div>
                                 <h3 class="m-3">` + array[indiceRelatedProduct].cost + ` $USD</small>
                             </div>
@@ -339,7 +339,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             <label for="star-5" title="5 estrellas">
             <i class="active fa fa-star"></i>
             </label><br><br>    
-            <button id="envioComentario" onclick="enviarComentario()">Enviar</button>       
+            <button id="envioComentario"  class="btn btn-info" onclick="enviarComentario()">Enviar</button>       
         </div><br>
             
         `;

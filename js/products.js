@@ -154,7 +154,7 @@ function showProducts(array){
 			                        </div>
 			                        <br>
 			                        <small class="text-muted">` + elem.soldCount + ` artículos vendidos</small><br>
-			                        <button onclick="verProducto(`+ elem.cost +`)">Ver</button>	
+			                        <button class="btn btn-primary" onclick="verProducto(`+ elem.cost +`)">Ver</button>	
 			                        
 			                    </div>
 			                    <h3 class="m-3">` + elem.cost + ` $USD</small>
