@@ -123,20 +123,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 });
 
-function verProducto(productoName) {
-
-    let producto = {
-      costo: productoName //el ideal seria que tuviera un id unico
-    };
-
-    let producto_json = JSON.stringify(producto);
-
-    localStorage.setItem("producto", producto_json);
-
-    window.location = 'product-info.html';
-
-}
-
 function showProducts(array){
 
     document.getElementById("dataProductos").innerHTML = "";

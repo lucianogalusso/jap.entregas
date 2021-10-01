@@ -21,7 +21,26 @@ function mostrarProducto(array, productoP){
 
         	for (let i = 0; i < elem.images.length; i++) {
 
-        		imagenes += '<img class="img-thumbnail" src="'+ elem.images[i] +'" >';
+        		if (i == 0) {
+
+                    imagenes += `
+                        <div class="carousel-item active">
+                          <img src="`+ elem.images[i] +`" class="d-block w-100">
+                        </div>
+                        `
+
+                }else{
+
+                     imagenes += `
+                        <div class="carousel-item">
+                          <img src="`+ elem.images[i] +`" class="d-block w-100">
+                        </div>
+                        `
+
+                }  
+
+
+               
 
         	}  
 
@@ -42,7 +61,8 @@ function mostrarProducto(array, productoP){
                                         <p>`+ array[indiceRelatedProduct].description +`</p>
                                     </div>
                                     <br>
-                                    <small class="text-muted">` + array[indiceRelatedProduct].soldCount + ` artículos vendidos</small><br>                                    
+                                    <small class="text-muted">` + array[indiceRelatedProduct].soldCount + ` artículos vendidos</small><br> 
+                                    <button onclick="verProducto(`+ array[indiceRelatedProduct].cost +`)">Ver</button>                                   
                                 </div>
                                 <h3 class="m-3">` + array[indiceRelatedProduct].cost + ` $USD</small>
                             </div>
