@@ -18,7 +18,7 @@ function showCartProducts(array){
                 let dolares = false;
                 if (elem.currency === "USD") {dolares = true}
                 arrPrecios[i] = [subtotal, dolares];	//ACA ERROR
-                alert(arrPrecios)
+                //alert(arrPrecios)
 
                 
 
@@ -30,13 +30,16 @@ function showCartProducts(array){
 			                </div>
 			                <div class="col">
 			                    <div class="d-flex w-100 justify-content-between">
-			                        <div>
+			                        <div class="col-6">
 			                            <h4 class="mb-1">`+ elem.name +`</h4>
 			                        </div>
-			                        <br>
-			                        <small class="text-muted">Cantidad: ` + elem.count + `</small><br>		                        
+			                        <small class="text-muted">Cantidad: ` + elem.count + `</small>
+			                        <div class="btn-group-vertical">
+									  	<button type="button" class="btn btn-outline-success">+</button>
+									    <button type="button" class="btn btn-outline-danger">-</button>
+									</div><br>		                        
 			                    </div>
-			                    <h3 class="m-3">` + elem.unitCost + ` $`+ elem.currency +` </small><br>
+			                    <h3 >` + elem.unitCost + ` $`+ elem.currency +` </small><br>
 			                    <small class="text-muted">Subtotal:  ` + elem.count + `*`+ elem.unitCost +` $`+ elem.currency +` = 
 			                    `+ elem.count*elem.unitCost +` $`+ elem.currency +` </small>
 			                </div>
@@ -82,12 +85,12 @@ function showPanel() {
 
 		if (arrPrecios[i][1] === true) {
 
-			alert(numero*40)
+			//alert(numero*40)
 			subtotal += numero*40;
 
 		}else{
 
-			alert(numero)
+			//alert(numero)
 			subtotal += numero;
 
 		}
@@ -97,11 +100,29 @@ function showPanel() {
 
 	panel = `
 
-		<div>
-			<h4>Resumen de total:</h4><br><br>
-			<p>Subtotal: `+subtotal+` $UYU</p><br>
-			<p>Envio: `+subtotal/10+`</p><br><br>
-			<h4>Total: `+(subtotal + subtotal/10)+` $UYU</h4>
+		<div class="row">
+			<h2 class="col-md-12">Resumen de total:</h2><br><br><br>	
+			<h6 class="col-5">Subtotal: `+subtotal+` $UYU</h6><br>
+			<h6 class="col-2">Envio: `+subtotal/10+`</h6>
+			<div class="dropdown col-1">
+			  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+			    Forma de envio
+			  </button>
+			  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+			    <li><a class="dropdown-item" href="#">Premium (2-5 dias)</a></li>
+			    <li><a class="dropdown-item" href="#">Express (5-8 dias)</a></li>
+			    <li><a class="dropdown-item" href="#">Standard (12 a te llegara?)</a></li>
+			  </ul>
+			</div>
+			<br><br><br>	
+			<h3 class="col-12">Total: `+(subtotal + subtotal/10)+` $UYU</h3><br><br><br><br>
+			<h4 class="col-5">Seleccionar forma de pago</h4>
+			<select class="col-5">
+			  <option value="tarjetaC">Tarjeta de credito</option>
+			  <option value="transferencia">Transferencia bancaria</option>
+			</select>		
+			<button id="comprar" class="col-12 btn btn-primary">Realizar compra</button><br><br><br><br>	
+
 		</div>
 
 	`
