@@ -29,20 +29,20 @@ function showCartProducts(array){
             	htmlContentToAppend += `
             		<div class="list-group-item list-group-item-action">
 			            <div class="row">
-			                <div class="col-3">
+			                <div class="col-2">
 			                    <img src="` + elem.src + `" alt="` +  `" class="img-thumbnail">
 			                </div>
 			                <div class="col">
 			                    <div class="d-flex w-100 justify-content-between">
-			                        <div class="col-6">
-			                            <h4 class="mb-1">`+ elem.name +`</h4>
+			                        <div class="col-8">
+			                            <h2 class="mb-1">`+ elem.name +`</h4>
+			                        </div><br><br><br>
+			                        <div class="col-3">			                       
+			                        Cantidad: <input style="height:35px; width:35px" onchange="calculoSubtotal(`+elem.unitCost+`, `+i+`, `+dolares+`)" type="number" id="cantidad`+i+`" value="`+elem.count+`"
+			                        min="1" max="10">
 			                        </div>
 
-			                        
-			                        <input onchange="calculoSubtotal(`+elem.unitCost+`, `+i+`, `+dolares+`)" type="number" id="cantidad`+i+`" value="`+elem.count+`"
-			                        min="1" max="10">Cantidad
-
-			                        <div class="btn-group-vertical">
+			                        <!-- <div class="btn-group-vertical">
 									  	<button type="button" class="btn btn-outline-success"
 
 									  	onclick="modificarCantidad(`+i+`, true)">+</button>
@@ -51,9 +51,10 @@ function showCartProducts(array){
 
 									    onclick="modificarCantidad(`+i+`, false)">-</button>
 
-									</div><br>		                        
+									</div><br>	-->
+
 			                    </div>
-			                    <h3 >` + elem.unitCost + ` $`+ elem.currency +` </small><br>
+			                    <h4 >` + elem.unitCost + ` $`+ elem.currency +` </small><br>
 			                    <small class="text-muted">Subtotal: </small>
 			                    <small id="subtotal`+i+`" class="text-muted">`+subtotal1+`</small>
 			                    <small class="text-muted">	$`+ elem.currency +` </small>
@@ -136,44 +137,16 @@ function calcularTotal() {
 
 function showPanel() {
 
-	document.getElementById("panelAbajo").innerHTML = "";
-	let panel = "";	
 	//let envio = calcularEnvio();
 
 	panel = `
 
-		<div class="row">
-			<h2 class="col-md-12">Resumen de total:</h2><br><br><br>	
-			<h6 class="col-3">Subtotal ($UYU):</h6>
-			<h6 id="subtotal" class="col-2"></h6>
-			<br>
-			<h6 class="col-2">Envio ($UYU): </h6>
-			<div class="dropdown col-1">
-			  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-			    Forma de envio
-			  </button>
-			  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-			    <li><a class="dropdown-item">Premium (2-5 dias)</a></li>
-			    <li><a class="dropdown-item">Express (5-8 dias)</a></li>
-			    <li><a class="dropdown-item">Standard (12 a te llegara?)</a></li>
-			  </ul>
-			</div>
-			<br><br><br>	
-			<h3 class="col-12">Total ($UYU): </h3>
-			<h3 class="col-12" id="total"></h3><br><br><br>
-			<h4 class="col-5">Seleccionar forma de pago</h4>
-			<select class="col-5">
-			  <option value="tarjetaC">Tarjeta de credito</option>
-			  <option value="transferencia">Transferencia bancaria</option>
-			</select>		
-			<button id="comprar" class="col-12 btn btn-primary">Realizar compra</button><br><br><br><br>	
-
-		</div>
+		
+			
 
 	`
 
 	//calcularTotal();
-	document.getElementById("panelAbajo").innerHTML = panel;
 
 }
 

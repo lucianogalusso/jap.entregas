@@ -64,9 +64,37 @@
     <div id="cartProductos">
       
     </div><br><br>
-    <div id="panelAbajo" class="p-4 text-muted bg-light">
-      
+    <div id="panelAbajo" class="p-4 text-muted bg-light"> 
+      <div class="row">
+        <h2 class="col-md-12">Resumen de total:</h2><br><br><br>  
+        <h6 class="col-3">Subtotal ($UYU):</h6>
+        <h6 id="subtotal" class="col-2"></h6>
+        <br>
+        <h6 class="col-2">Envio ($UYU): </h6>
+        <h6 id="envio" class="col-2"></h6>
+        <div class="dropdown col-1">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" 
+          data-bs-toggle="dropdown" aria-expanded="false">Forma de envio
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item">Premium (2-5 dias)</a></li>
+            <li><a class="dropdown-item">Express (5-8 dias)</a></li>
+            <li><a class="dropdown-item" checked>Standard (12 a te llegará?)</a></li>
+          </ul>
+        </div>
+        <br><br><br>  
+        <h3 class="col-12">Total ($UYU): </h3>
+        <h3 class="col-12" id="total"></h3><br><br>
+        <h4 class="col-5">Seleccionar forma de pago</h4>
+        <select class="col-5">
+          <option value="tarjetaC">Tarjeta de credito</option>
+          <option value="transferencia">Transferencia bancaria</option>
+        </select>   
+        <button id="comprar" class="col-12 btn btn-primary">Realizar compra</button><br><br><br>
+      </div>
     </div>
+
+
   </div>
   <div id="spinner-wrapper">
     <div class="lds-ring">
