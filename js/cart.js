@@ -80,7 +80,7 @@ function showCartProducts(array){
 
             }else{
 
-            	showPanel();
+            	calcularTotal();
 
             }          
 
@@ -100,13 +100,34 @@ function calculoSubtotal(precio, i, dolares) {
 
 function calcularEnvio() {
 
+	let subtotal = parseInt(document.getElementById(`subtotal`).innerHTML);
 	let envio = 0;
+	let metodo = document.getElementsByName("metodoEnvio"); //array de metodos 
 
+	for (var i = 0; i < metodo.length; i++) {
 
+		if (metodo[i].checked) {
 
+			if (metodo[i].value == 1) {
 
+				envio = subtotal*15/100;
 
-	return envio;
+			}else if(metodo[i].value == 2) {
+
+				envio = subtotal*7/100;
+
+			}else{
+
+				envio = subtotal/20;
+
+			}
+
+		}
+	
+	}
+
+	document.getElementById("envio").innerHTML = envio;	
+	calcularTotalFinal();
 
 }
 
@@ -131,22 +152,16 @@ function calcularTotal() {
 
 	//return total;
 	document.getElementById("subtotal").innerHTML = total;	
-	//calcularEnvio();
+	calcularEnvio();
 
 }
 
-function showPanel() {
+function calcularTotalFinal() {
 
-	//let envio = calcularEnvio();
-
-	panel = `
-
-		
-			
-
-	`
-
-	//calcularTotal();
+	let subtotal = parseInt(document.getElementById(`subtotal`).innerHTML);
+	let envio = parseInt(document.getElementById(`envio`).innerHTML);
+	let total = subtotal + envio;
+	document.getElementById("total").innerHTML = total;	
 
 }
 
@@ -158,11 +173,18 @@ document.addEventListener("DOMContentLoaded", function(e){
         {
             productos = resultObj.data.articles;
             showCartProducts(productos);
-
             //envio
+
         }
     });
 
-    //envio
+    let metodos = document.getElementsByName(`metodoEnvio`);
+    for (var i = 0; i < metodos.length; i++) {
+
+    	metodos[i].addEventListener("change", function() {
+    		calcularEnvio();
+    	});
+    	
+    }
 
 });

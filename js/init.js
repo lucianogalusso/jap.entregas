@@ -72,7 +72,9 @@ document.addEventListener("DOMContentLoaded", function(e){
     document.getElementById("user").innerHTML = user.email;
     document.getElementById("user2").innerHTML = 'Bienvenido '+ user.email;
   }else if ((ubicacion != 'https://lucianogalusso.github.io/jap.entregas/index.html') &&
-            (ubicacion != 'file:///D:/Archivos%20de%20programa/jap.entregas/index.html')){
+            (ubicacion != 'file:///D:/Archivos%20de%20programa/jap.entregas/index.html') &&
+            (ubicacion != 'file:///C:/Users/Admin/Desktop/Cosas%20muy%20lindas%20y%20sobretodo%20cortas/Github/jap.entregas-main/index.html')
+            ){
     window.location = 'index.html';
   }
 
