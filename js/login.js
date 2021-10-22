@@ -36,7 +36,12 @@ document.addEventListener("DOMContentLoaded", function(e){
 
       let user = {
           email: document.getElementById("email").value, 
-          password: document.getElementById("password").value, 
+          imagen: "",
+          password: document.getElementById("password").value,
+          nombre: "",
+          apellidos: "",
+          edad: "",
+          telefono: "", 
       };
 
       let user_json = JSON.stringify(user);

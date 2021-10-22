@@ -69,8 +69,14 @@ document.addEventListener("DOMContentLoaded", function(e){
   if (localStorage.getItem("user")) {
     user_json = localStorage.getItem("user");
     user = JSON.parse(user_json);
-    document.getElementById("user").innerHTML = user.email;
-    document.getElementById("user2").innerHTML = 'Bienvenido '+ user.email;
+    if (user.nombre == "") {
+      document.getElementById("user").innerHTML = user.email;
+      document.getElementById("user2").innerHTML = 'Bienvenido '+ user.email;
+    }else{
+      document.getElementById("user").innerHTML = user.nombre;
+      document.getElementById("user2").innerHTML = 'Bienvenido '+ user.nombre;
+    }
+    
   }else if ((ubicacion != 'https://lucianogalusso.github.io/jap.entregas/index.html') &&
             (ubicacion != 'file:///D:/Archivos%20de%20programa/jap.entregas/index.html') &&
             (ubicacion != 'file:///C:/Users/Admin/Desktop/Cosas%20muy%20lindas%20y%20sobretodo%20cortas/Github/jap.entregas-main/index.html')
