@@ -142,24 +142,25 @@ function showProducts(array){
 
                 	htmlContentToAppend += `
 	                
-                		<div class="col-md-4">
+                		<div class="col-md-4 mt-1 list-group-item list-group-item-action">
 			                <div>
 			                    <img src="` + elem.imgSrc + `" class="img-fluid" alt="Responsive image">
 			                </div>
 			                <div>
-			                    <div class="d-flex w-100 justify-content-between">
-			                        <div>
+			                    <div class="row d-flex w-100 justify-content-between">
+			                        <div class="col-9">
 			                            <h4 class="mb-1">`+ elem.name +`</h4>
 			                            <p>`+ elem.description +`</p>
 			                        </div>
-			                        <br>
-			                        <small class="text-muted">` + elem.soldCount + ` artículos vendidos</small><br>
-			                        <button class="btn btn-primary" onclick="verProducto(`+ elem.cost +`)">Ver</button>	
 			                        
+			                        <small class="text-muted">` + elem.soldCount + ` artículos vendidos</small><br>	<br>	                        			                        
 			                    </div>
-			                    <h3 class="m-3">` + elem.cost + ` $USD</small>
+			                     <div class="row">
+				                    <button class="btn btn-primary" onclick="verProducto(`+ elem.cost +`)">Ver</button>	
+				                    <h3 class="m-3">` + elem.cost + ` $USD</small>
+				                </div>
 			                </div>
-			            </div>
+			            </div><br><br>
 			        
 			        `
 
