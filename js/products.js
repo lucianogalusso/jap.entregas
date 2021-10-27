@@ -141,12 +141,12 @@ function showProducts(array){
                     ((busqueda == undefined) || (elem.name.toLowerCase().includes(busqueda)) || (elem.description.toLowerCase().includes(busqueda))) ) {
 
                 	htmlContentToAppend += `
-	                <div class="list-group-item list-group-item-action">
-			            <div class="row">
-			                <div class="col-3">
-			                    <img src="` + elem.imgSrc + `" alt="` +  `" class="img-thumbnail">
+	                
+                		<div class="col-md-4">
+			                <div>
+			                    <img src="` + elem.imgSrc + `" class="img-fluid" alt="Responsive image">
 			                </div>
-			                <div class="col">
+			                <div>
 			                    <div class="d-flex w-100 justify-content-between">
 			                        <div>
 			                            <h4 class="mb-1">`+ elem.name +`</h4>
@@ -160,7 +160,7 @@ function showProducts(array){
 			                    <h3 class="m-3">` + elem.cost + ` $USD</small>
 			                </div>
 			            </div>
-			        </div>
+			        
 			        `
 
                 }
