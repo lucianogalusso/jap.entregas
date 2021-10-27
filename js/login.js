@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 
       let user = {
           email: document.getElementById("email").value, 
-          imagen: "",
+          //imagen: "",
           password: document.getElementById("password").value,
           nombre: "",
           apellidos: "",

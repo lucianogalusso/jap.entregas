@@ -10,14 +10,8 @@ function mostrarInfo() {
 
 	document.getElementById("info").innerHTML = "";
 
-	let content = 
+	let content = `
 
-		/*<div class="col-12">
-	        <a href="https://ibb.co/WFdC6Xw">
-	        <img id="imgP" class="m-3 rounded mx-auto d-block" style="width:200px; height:200px;" src="https://i.ibb.co/RPM89Km/luissuarez-jpg-340208009.jpg" alt="luissuarez-jpg-340208009" border="0"></a><br>
-	    </div>
-	    <button onclick="alert("Se ha enviado un correo a su cuenta")" class="btn btn-link">Se olvidó de la contraseña?</button>*/
-	    `
 		<div class="col-6">
 			<label class="col-4">Nombre:</label>        
 	        <input id="nombreNew" class="col-6" placeholder="`+nombre+`"><br>
@@ -87,9 +81,8 @@ function actualizarDatos() {
 	}
 
 
-	
 	// Get a reference to the image element
-	var imagenPerfil = document.getElementById("imgP");
+	/*var imagenPerfil = document.getElementById("imgP");
 
 	// Take action when the image has loaded
 	    var imgCanvas = document.createElement("canvas"),
@@ -103,11 +96,12 @@ function actualizarDatos() {
 	    imgContext.drawImage(imagenPerfil, 0, 0, imagenPerfil.width, imagenPerfil.height);
 
 	    // Get canvas contents as a data URL
-	    var imgAsDataURL = imgCanvas.toDataURL("image/jpg");
+	    var imgAsDataURL = imgCanvas.toDataURL("image/jpg");*/
+	
 
 	    let user = {
 			email: emailNew, 
-			imagen: imgAsDataURL,
+			//imagen: imgAsDataURL,
 			password: password,
 			nombre: nombreNew,
 			apellidos: apellidosNew,
