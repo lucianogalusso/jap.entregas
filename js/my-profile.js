@@ -10,12 +10,14 @@ function mostrarInfo() {
 
 	document.getElementById("info").innerHTML = "";
 
-	let content = `
+	let content = 
 
-		<div class="col-12">
+		/*<div class="col-12">
 	        <a href="https://ibb.co/WFdC6Xw">
 	        <img id="imgP" class="m-3 rounded mx-auto d-block" style="width:200px; height:200px;" src="https://i.ibb.co/RPM89Km/luissuarez-jpg-340208009.jpg" alt="luissuarez-jpg-340208009" border="0"></a><br>
 	    </div>
+	    <button onclick="alert("Se ha enviado un correo a su cuenta")" class="btn btn-link">Se olvidó de la contraseña?</button>*/
+	    `
 		<div class="col-6">
 			<label class="col-4">Nombre:</label>        
 	        <input id="nombreNew" class="col-6" placeholder="`+nombre+`"><br>
@@ -38,7 +40,7 @@ function mostrarInfo() {
 	    </div><br><br><br>
 	    <div class="col-12">
 	        <button id="submit" onclick="actualizarDatos()" class="btn btn-info col-12">Aplicar cambios</button> <br>
-	        <button onclick="alert("Se ha enviado un correo a su cuenta")" class="btn btn-link">Se olvidó de la contraseña?</button>
+	        
 	    </div><br><br>
 	`;
 
