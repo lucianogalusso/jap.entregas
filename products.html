@@ -20,23 +20,18 @@
         <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
         <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-        <a class="py-2 d-none d-md-inline-block" type="button" id="user" style="color:#f1f1f1"
-        onclick="document.getElementById('id01').style.display='block'"></a>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle py-2 d-none d-md-inline-block" type="button" id="user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown button
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="my-profile.html">Ver Perfil</a>
+            <a class="dropdown-item" href="cart.html">Ver carrito</a>
+            <a class="dropdown-item" id="cerrar" href="index.html">Cerrar sesión</a>
+          </div>
+        </div>
       </div>
     </nav>
-
-    <div id="id01" class="modal"> 
-      <form class="modal-content animate" action="/action_page.php" method="post">
-        <h2 id="user2"></h2>
-        <div class="container" style="background-color:#f1f1f1">
-          <br>
-          <a type="button" id="verPerfil" href="my-profile.html">Ver perfil</a><br><br>
-          <a type="button" id="verCarrito" href="cart.html">Ver carrito</a><br><br>
-          <a type="button" id="cerrar" href="index.html">Cerrar sesión?</a><br>
-          <br>
-        </div>
-      </form>
-    </div>
     
     <div class="container p-3">
       <div class="p-4 text-muted bg-light">

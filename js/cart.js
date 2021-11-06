@@ -98,6 +98,54 @@ function calculoSubtotal(precio, i, dolares) {
 
 }
 
+function pago() {
+
+	let arrpagos = document.getElementsByName("metodoPago");
+	let pago = "";
+	let nombre;
+	let numero;
+
+	if (arrpagos[0].checked) {
+
+		nombre = document.getElementById("nombreTarjeta").value;
+		numero = document.getElementById("numeroTarjeta").value;
+		if (nombre == "" || numero == "") {
+			alert("Debe ingresar los valores necesarios");
+			pago = "Seleccionar forma de pago";
+		}else{
+			pago = "Tarjeta de credito";
+			document.getElementById("nombreTarjeta").innerHTML = nombre;
+			document.getElementById("numeroTarjeta").innerHTML = numero;
+			document.getElementById("nombreCuenta").innerHTML = "";
+			document.getElementById("numeroCuenta").innerHTML = "";
+		}
+
+	}else if (arrpagos[1].checked) {
+
+		nombre = document.getElementById("nombreCuenta").value;
+		numero = document.getElementById("numeroCuenta").value;
+		if (nombre == "" || numero == "") {
+			alert("Debe ingresar los valores necesarios");
+			pago = "Seleccionar forma de pago";
+		}else{
+			pago = "Transferencia bancaria";
+			document.getElementById("nombreCuenta").innerHTML = nombre;
+			document.getElementById("numeroCuenta").innerHTML = numero;
+			document.getElementById("nombreTarjeta").innerHTML = "";
+			document.getElementById("numeroTarjeta").innerHTML = "";
+		}
+		
+
+	}else{
+
+		pago = "Seleccionar forma de pago"
+
+	}
+
+	document.getElementById("formaPago").innerHTML = pago;
+
+}
+
 function calcularEnvio() {
 
 	let subtotal = parseInt(document.getElementById(`subtotal`).innerHTML);
