@@ -3,6 +3,8 @@
 let arrPrecios = [];
 let arrCantidades = [];
 let productos = [];
+let formaPago = false;
+let habilitadoPago = false;
 
 function showCartProducts(array){
 
@@ -98,13 +100,75 @@ function calculoSubtotal(precio, i, dolares) {
 
 }
 
+function realizarCompra() {
+
+	let calle = document.getElementById("direccionCalle");
+    let esquina = document.getElementById("direccionEsq");
+    let numero = document.getElementById("direccionNum");
+
+    let contador = 0;
+
+    if (calle.value === ''){
+   
+      calle.classList.add("is-invalid");
+      contador += 1;
+
+    }else{
+
+      calle.classList.remove("is-invalid");
+      calle.classList.add("is-valid");
+
+    }
+
+    if (esquina.value === ''){
+   
+      esquina.classList.add("is-invalid");
+      contador += 1;
+
+    }else{
+
+      esquina.classList.remove("is-invalid");
+      esquina.classList.add("is-valid");
+
+    }
+
+    if (numero.value === ''){
+   
+      numero.classList.add("is-invalid");
+      contador += 1;
+
+    }else{
+
+      numero.classList.remove("is-invalid");
+      numero.classList.add("is-valid");
+
+    }
+
+	if (contador > 0) {
+
+
+
+	}else if (formaPago && contador == 0) {
+
+		alert("La compra ha sido realizada con éxito")
+		window.location = 'PRODUCTS.html';
+
+
+	}else{
+
+		alert("Debe seleccionar una forma de pago")
+
+	}
+
+}
+
 function pago() {
 
 	let arrpagos = document.getElementsByName("metodoPago");
 	let pago = "";
 	let nombre;
 	let numero;
-
+	
 	if (arrpagos[0].checked) {
 
 		nombre = document.getElementById("nombreTarjeta").value;
@@ -116,8 +180,7 @@ function pago() {
 			pago = "Tarjeta de credito";
 			document.getElementById("nombreTarjeta").innerHTML = nombre;
 			document.getElementById("numeroTarjeta").innerHTML = numero;
-			document.getElementById("nombreCuenta").innerHTML = "";
-			document.getElementById("numeroCuenta").innerHTML = "";
+			formaPago = true;
 		}
 
 	}else if (arrpagos[1].checked) {
@@ -131,8 +194,7 @@ function pago() {
 			pago = "Transferencia bancaria";
 			document.getElementById("nombreCuenta").innerHTML = nombre;
 			document.getElementById("numeroCuenta").innerHTML = numero;
-			document.getElementById("nombreTarjeta").innerHTML = "";
-			document.getElementById("numeroTarjeta").innerHTML = "";
+			formaPago = true;
 		}
 		
 
