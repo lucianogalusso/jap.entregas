@@ -1,13 +1,34 @@
-const CATEGORIES_URL = "https://japdevdep.github.io/ecommerce-api/category/all.json";
-const PUBLISH_PRODUCT_URL = "https://japdevdep.github.io/ecommerce-api/product/publish.json";
-const CATEGORY_INFO_URL = "https://japdevdep.github.io/ecommerce-api/category/1234.json";
-const PRODUCTS_URL = "https://japdevdep.github.io/ecommerce-api/product/all.json";
-const PRODUCT_INFO_URL = "https://japdevdep.github.io/ecommerce-api/product/5678.json";
-const PRODUCTOS_ACTUALIZADOS_URL = "https://lucianogalusso.github.io/jap.entregas/js/infoProducts.json";
-const PRODUCT_INFO_COMMENTS_URL = "https://japdevdep.github.io/ecommerce-api/product/5678-comments.json";
-const PRODUCTOS_COMENTARIOS_ACTUALIZADOS_URL = "https://lucianogalusso.github.io/jap.entregas/js/comentariosInfo.json";
-const CART_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/654.json";
-const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
+//const CATEGORIES_URL = "https://japdevdep.github.io/ecommerce-api/category/all.json";
+const CATEGORIES_URL = "http://localhost:3000/CATEGORIES_URL"
+
+//const PUBLISH_PRODUCT_URL = "https://japdevdep.github.io/ecommerce-api/product/publish.json";
+const PUBLISH_PRODUCT_URL = "http://localhost:3000/PUBLISH_PRODUCT_URL"
+
+//const CATEGORY_INFO_URL = "https://japdevdep.github.io/ecommerce-api/category/1234.json";
+const CATEGORY_INFO_URL = "http://localhost:3000/CATEGORY_INFO_URL"
+
+//const PRODUCTS_URL = "https://japdevdep.github.io/ecommerce-api/product/all.json";
+const PRODUCTS_URL = "http://localhost:3000/PRODUCTS_URL"
+
+//const PRODUCT_INFO_URL = "https://japdevdep.github.io/ecommerce-api/product/5678.json";
+const PRODUCT_INFO_URL = "http://localhost:3000/PRODUCT_INFO_URL"
+
+//const PRODUCTOS_ACTUALIZADOS_URL = "https://lucianogalusso.github.io/jap.entregas/js/infoProducts.json";
+const PRODUCTOS_ACTUALIZADOS_URL = "http://localhost:3000/PRODUCTOS_ACTUALIZADOS_URL"
+
+//const PRODUCT_INFO_COMMENTS_URL = "https://japdevdep.github.io/ecommerce-api/product/5678-comments.json";
+const PRODUCT_INFO_COMMENTS_URL = "http://localhost:3000/PRODUCT_INFO_COMMENTS_URL"
+
+//const PRODUCTOS_COMENTARIOS_ACTUALIZADOS_URL = "https://lucianogalusso.github.io/jap.entregas/js/comentariosInfo.json";
+const PRODUCTOS_COMENTARIOS_ACTUALIZADOS_URL = "http://localhost:3000/PRODUCTOS_COMENTARIOS_ACTUALIZADOS_URL"
+
+//const CART_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/654.json";
+const CART_INFO_URL = "http://localhost:3000/CART_INFO_URL"
+
+//const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
+const CART_BUY_URL = "http://localhost:3000/CART_BUY_URL"
+
+
 
 var showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
@@ -71,10 +92,8 @@ document.addEventListener("DOMContentLoaded", function(e){
     user = JSON.parse(user_json);
     if (user.nombre == "") {
       document.getElementById("user").innerHTML = user.email;
-      document.getElementById("user2").innerHTML = 'Bienvenido '+ user.email;
     }else{
       document.getElementById("user").innerHTML = user.nombre;
-      document.getElementById("user2").innerHTML = 'Bienvenido '+ user.nombre;
     }
     
   }else if ((ubicacion != 'https://lucianogalusso.github.io/jap.entregas/index.html') &&
